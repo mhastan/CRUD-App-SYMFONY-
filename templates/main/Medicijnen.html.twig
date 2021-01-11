@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %} Crud App{% endblock %}
+
+{% block body %}
+
+<div class="container" style="margin-left: auto; margin-right: auto; width: 80%; padding-top: 10vh;">
+    <h1 style="font-family: 'Anton', sans-serif; text-align: center"> <i>HealthOne </i></h1>
+<table class="table">
+        <thead class="thead" style="background-color: black; color: white">
+        <tr>
+
+            <th scope="col">ID</th>
+            <th scope="col">Naam</th>
+            <th scope="col">Werking</th>
+            <th scope="col">Bijwerking</th>
+            <th scope="col">Prijs</th>
+            <th scope="col">Verzekerd</th>
+            <th scope="col" style="background-color: grey">Actie</th>
+            <th scope="col"></th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+
+            {% for medicijn in medicijnen %}
+                <tr>
+                    <td> {{ medicijn.id }}</td>
+                <td> {{ medicijn.naam}}</td>
+                <td> {{ medicijn.werking }}</td>
+                    {% if medicijn.bijwerking|length > 40 %}
+                    <td> {{ medicijn.bijwerking|slice(0, 40) }}</td>
+                        {% else %}
+                        <td> {{ medicijn.bijwerking}}</td>
+                    {% endif %}
+
+                <td>  &#8364; {{ medicijn.prijs }}</td>
+
+                    <td>
+                        {% if medicijn.verzekerd == 1  %}
+                            <p style="color: green;"><b>Verzekerd </b></p>
+                        {% else %}
+                            <p style="color: red;"> Niet verzekerd </p>
+                        {% endif %}
+                    </td>
+                    <td>
+                    <a style="color: black;" href=" {{ path('update', { id: medicijn.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a href=" {{ path('delete', { id: medicijn.id}) }}"><i class="fas fa-trash" style="color: red;"></i></a>
+                    </td>
+                    <td>
+                        <a style="color: black" href="{{ path('show', {id: medicijn.id}) }}"><i class="fas fa-eye"></i></a>
+                    </td>
+        </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}

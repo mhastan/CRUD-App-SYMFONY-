@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Watch {% endblock %}
+
+
+
+{% block body %}
+    <div class="container" style="margin-left: auto; margin-right: auto; width: 50%; padding-top: 10vh;">
+
+        <div class="col-md-12" style="bor">
+
+        <b> ID: </b>{{ medicijnen.Id }} <br>
+            <hr>
+        <b> Naam: </b>{{ medicijnen.Naam }} <br>
+            <hr>
+        <b> Werking: </b>{{ medicijnen.Werking }} <br>
+            <hr>
+        <b>Bijwerking: </b>{{ medicijnen.Bijwerking }} <br>
+            <hr>
+            <b> Prijs: </b> <font color="green"> &#8364; {{ medicijnen.Prijs }}<br></font>
+            <hr>
+        <b>Verzekerd: </b>{{ medicijnen.Verzekerd }}
+            <br>
+            <hr>
+            <a href="{{ path('medicijnen') }}"> HOME </a>
+
+    </div>
+    </div>
+
+{% endblock %}
