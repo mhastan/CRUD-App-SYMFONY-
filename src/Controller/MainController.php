@@ -34,6 +34,7 @@ class MainController extends AbstractController
 
         $medicijnen = new MedicijnController();
 
+
         $form = $this->createForm(MedicijnenFormType::class, $medicijnen);
 
         $form->add('Save', SubmitType::class, [
@@ -48,6 +49,7 @@ class MainController extends AbstractController
             $data = $form->getData();
             $em->persist($data);
             $em->flush();
+            $this->addFlash('message', 'Medicijn is toegevoegd!');
             return $this->redirect($this->generateUrl('medicijnen'));
         }
 
@@ -74,6 +76,7 @@ class MainController extends AbstractController
 
             $em->remove($medicijn);
             $em->flush();
+            $this->addFlash('message', 'Medicijn is verwijderd!');
 
             return $this->redirect($this->generateUrl('medicijnen'));
 

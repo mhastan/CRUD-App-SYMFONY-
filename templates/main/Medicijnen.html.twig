@@ -5,7 +5,11 @@
 {% block body %}
 
 <div class="container" style="margin-left: auto; margin-right: auto; width: 80%; padding-top: 10vh;">
-    <h1 style="font-family: 'Anton', sans-serif; text-align: center"> <i>HealthOne </i></h1>
+    {% for message in app.flashes('message') %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
 <table class="table">
         <thead class="thead" style="background-color: black; color: white">
         <tr>
